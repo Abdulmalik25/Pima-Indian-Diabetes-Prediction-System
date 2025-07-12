@@ -2,40 +2,91 @@ import streamlit as st
 import pickle
 import numpy as np
 
+# Set Streamlit page config
+st.set_page_config(page_title="🧬 Diabetes Predictor", layout="centered", page_icon="🩺")
+
+# Dark theme + gradient headings + card inputs
+st.markdown("""
+    <style>
+    body {
+        background-color: #121212;
+        color: white;
+    }
+    .stApp {
+        background-color: #1e1e1e;
+    }
+    h2 {
+        background: linear-gradient(to right, #00c6ff, #0072ff);
+        -webkit-background-clip: text;
+        color: transparent;
+        font-weight: 700;
+        text-align: center;
+    }
+    .stSidebar > div {
+        background-color: #252526;
+        padding: 1rem;
+        border-radius: 10px;
+    }
+    .stButton>button {
+        background-color: #00c6ff;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 20px;
+        font-weight: bold;
+    }
+    .stSlider > div > div {
+        color: #90caf9;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+# Header with white-colored text
+st.markdown("""
+<h2 style='color: #FFFFFF; text-align: center;'>🩺 Diabetes Prediction System</h2>
+<p style='text-align: center; color: #DDDDDD; font-size: 16px;'>
+🔎 Enter patient information below to check diabetes risk using a trained machine learning model.
+</p>
+""", unsafe_allow_html=True)
+
+
 # Load model and scaler
 with open('diabetes_model.pkl', 'rb') as f:
     model = pickle.load(f)
-
 with open('scaler.pkl', 'rb') as f:
     scaler = pickle.load(f)
 
-st.title("🩺 Diabetes Prediction App")
+# Sidebar inputs styled as a card
+st.sidebar.header("📋 Patient Information")
 
-# Input UI
-pregnancies = st.number_input("Pregnancies", 0, 20, 2)
-glucose = st.slider("Glucose", 0, 200, 120)
-blood_pressure = st.slider("Blood Pressure", 0, 122, 70)
-skin_thickness = st.slider("Skin Thickness", 0, 100, 20)
-insulin = st.slider("Insulin", 0, 846, 79)
-bmi = st.slider("BMI", 0.0, 70.0, 32.0)
-dpf = st.slider("Diabetes Pedigree Function", 0.0, 2.5, 0.5)
-age = st.slider("Age", 10, 100, 33)
+pregnancies = st.sidebar.number_input("👶 Pregnancies", 0, 20, 2)
+glucose = st.sidebar.slider("🍬 Glucose", 0, 200, 120)
+blood_pressure = st.sidebar.slider("💓 Blood Pressure", 0, 122, 72)
+skin_thickness = st.sidebar.slider("🩹 Skin Thickness", 0, 100, 20)
+insulin = st.sidebar.slider("💉 Insulin", 0, 900, 79)
+bmi = st.sidebar.slider("⚖️ BMI", 0.0, 70.0, 32.0)
+dpf = st.sidebar.slider("📈 Diabetes Pedigree Function", 0.0, 2.5, 0.5)
+age = st.sidebar.slider("📅 Age", 10, 100, 33)
 
-# When user clicks predict
-if st.button("Predict"):
-    # Arrange features in the same order as training
+# Predict
+if st.button("🔍 Predict Diabetes"):
     input_data = np.array([[pregnancies, glucose, blood_pressure, skin_thickness,
                             insulin, bmi, dpf, age]])
-
-    # Apply the same scaler
     input_scaled = scaler.transform(input_data)
-
-    # Predict
-    prediction = model.predict(input_scaled)[0]
+    pred = model.predict(input_scaled)[0]
     prob = model.predict_proba(input_scaled)[0][1]
 
-    # Output
-    if prediction == 1:
-        st.error(f"Prediction: Diabetic ⚠️ (Confidence: {prob:.2%})")
+    st.markdown("## 🎯 Prediction Result")
+    if pred == 1:
+        st.error(f"⚠️ The model predicts the patient is **Diabetic** — Confidence: **{prob:.2%}**")
     else:
-        st.success(f"Prediction: Not Diabetic ✅ (Confidence: {1 - prob:.2%})")
+        st.success(f"✅ The model predicts the patient is **Not Diabetic** — Confidence: **{1 - prob:.2%}**")
+
+
+# Footer with visible light color
+st.markdown("---")
+st.markdown("""
+<p style='text-align: center; color: #AAAAAA; font-size: 14px;'>
+Made with ❤️ using Streamlit
+</p>
+""", unsafe_allow_html=True)
