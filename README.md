@@ -53,8 +53,14 @@ To develop and deploy a real-time diabetes prediction system that:
   - `BMI/Age` ratio
   - `Pregnancy x BMI` product
 
+<img width="703" height="369" alt="image" src="https://github.com/user-attachments/assets/c797bf86-0850-465b-b974-5da64f194551" />
+
+
 ### 5. **Balancing the Data**
 - Applied **SMOTE** to balance class distribution before model training
+
+<img width="512" height="353" alt="image" src="https://github.com/user-attachments/assets/4ff76b92-8d1e-4c8c-9cfc-c6ec604aaead" />
+
 
 ### 6. **Model Training**
 Trained and evaluated the following models:
