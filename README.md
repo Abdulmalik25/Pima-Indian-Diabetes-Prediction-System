@@ -103,7 +103,8 @@ An interactive UI was built using **Streamlit** to allow users to:
 - Get real-time prediction and confidence score
 - Access the model in a clean, user-friendly interface
 
-👉 **[Click here to try the app →](#)** *(replace with actual link once hosted)*
+👉 [Click here to try the app →](https://pima-indian-diabetes-prediction-system-ldmfgp4gvzrrqhzxgxsxjd.streamlit.app/)
+
 
 ---
 
