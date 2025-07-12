@@ -2,18 +2,19 @@ import streamlit as st
 import pickle
 import numpy as np
 
-# Set Streamlit page config
+# Page config
 st.set_page_config(page_title="🧬 Diabetes Predictor", layout="centered", page_icon="🩺")
 
-# Dark theme + gradient headings + card inputs
+# Minimal dark theme + visible sidebar + safe styles
 st.markdown("""
     <style>
     body {
         background-color: #121212;
-        color: white;
+        color: #f1f1f1;
     }
     .stApp {
         background-color: #1e1e1e;
+        color: white;
     }
     h2 {
         background: linear-gradient(to right, #00c6ff, #0072ff);
@@ -22,11 +23,6 @@ st.markdown("""
         font-weight: 700;
         text-align: center;
     }
-    .stSidebar > div {
-        background-color: #252526;
-        padding: 1rem;
-        border-radius: 10px;
-    }
     .stButton>button {
         background-color: #00c6ff;
         color: white;
@@ -34,9 +30,6 @@ st.markdown("""
         border-radius: 8px;
         padding: 10px 20px;
         font-weight: bold;
-    }
-    .stSlider > div > div {
-        color: #90caf9;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -56,7 +49,7 @@ with open('diabetes_model.pkl', 'rb') as f:
 with open('scaler.pkl', 'rb') as f:
     scaler = pickle.load(f)
 
-# Sidebar inputs styled as a card
+# Sidebar inputs (now all labels will be visible)
 st.sidebar.header("📋 Patient Information")
 
 pregnancies = st.sidebar.number_input("👶 Pregnancies", 0, 20, 2)
@@ -68,7 +61,7 @@ bmi = st.sidebar.slider("⚖️ BMI", 0.0, 70.0, 32.0)
 dpf = st.sidebar.slider("📈 Diabetes Pedigree Function", 0.0, 2.5, 0.5)
 age = st.sidebar.slider("📅 Age", 10, 100, 33)
 
-# Predict
+# Predict button
 if st.button("🔍 Predict Diabetes"):
     input_data = np.array([[pregnancies, glucose, blood_pressure, skin_thickness,
                             insulin, bmi, dpf, age]])
@@ -81,7 +74,6 @@ if st.button("🔍 Predict Diabetes"):
         st.error(f"⚠️ The model predicts the patient is **Diabetic** — Confidence: **{prob:.2%}**")
     else:
         st.success(f"✅ The model predicts the patient is **Not Diabetic** — Confidence: **{1 - prob:.2%}**")
-
 
 # Footer with visible light color
 st.markdown("---")
