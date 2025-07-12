@@ -40,6 +40,9 @@ To develop and deploy a real-time diabetes prediction system that:
 - Visualized distributions using box plots and violin plots
 - Identified correlations between features and diabetes outcome
 
+  <img width="792" height="650" alt="image" src="https://github.com/user-attachments/assets/0806e6d7-df4c-43d1-a93c-2925af8776e1" />
+
+
 ### 3. **Outlier Handling**
 - Applied IQR method to cap/floor outliers for key features
 
@@ -66,6 +69,9 @@ Trained and evaluated the following models:
 | Random Forest       | 0.7338    |
 | XGBoost             | 0.7338    |
 
+<img width="997" height="599" alt="image" src="https://github.com/user-attachments/assets/aa0413b6-c0f2-4d35-bd78-8419a3ef5e5c" />
+
+
 ### 7. **Model Evaluation (AUC Scores)**
 
 | Model                | AUC Score |
@@ -78,6 +84,9 @@ Trained and evaluated the following models:
 | KNN                 | 0.7652    |
 | Tuned KNN           | 0.7535    |
 | Decision Tree       | 0.6778    |
+
+
+<img width="996" height="589" alt="image" src="https://github.com/user-attachments/assets/98203429-4202-4589-9ec6-b85edc7fa519" />
 
 ---
 
