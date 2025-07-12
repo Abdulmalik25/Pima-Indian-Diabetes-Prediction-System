@@ -1,5 +1,6 @@
+[Diabetes Prediction System](https://pima-indian-diabetes-prediction-system-ldmfgp4gvzrrqhzxgxsxjd.streamlit.app/)
 
-# 🩺 Pima Indian Diabetes Prediction System
+# 🩺Pima Indian Diabetes Prediction System 
 
 An end-to-end machine learning system that predicts the likelihood of diabetes in patients based on the Pima Indians Diabetes dataset. This project integrates exploratory data analysis, model training, feature engineering, evaluation, and deployment via an interactive Streamlit web application.
 
@@ -103,7 +104,7 @@ An interactive UI was built using **Streamlit** to allow users to:
 - Get real-time prediction and confidence score
 - Access the model in a clean, user-friendly interface
 
-👉 [Click here to try the app →](https://pima-indian-diabetes-prediction-system-ldmfgp4gvzrrqhzxgxsxjd.streamlit.app/)
+👉 [Click here to try the app](https://pima-indian-diabetes-prediction-system-ldmfgp4gvzrrqhzxgxsxjd.streamlit.app/)
 
 
 ---
